@@ -11,5 +11,3 @@ Giải thuật xử lý song song và phân bố - NT538.O11.MMCL
      
 * GIT BASH COMMANDS:
   ( Ae có thể note đóng góp vào đây các cmd Git Bash thông dụng để tiện ghi nhớ, edit thẳng vào Readme này của **branch main** )
-
-ParralelAndDistributed
