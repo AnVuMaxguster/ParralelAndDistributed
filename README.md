@@ -14,6 +14,9 @@ Giải thuật xử lý song song và phân bố - NT538.O11.MMCL
 
 
 -BAO
+
+
+
 Clone from an existing repo with:    git clone “repo url”
 
 git remote add origin https://github.com/....	- use to link local folder to a remote repo
