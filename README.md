@@ -34,5 +34,6 @@ Git pull
 Branch:
 Git fetch	- up-to-date with remote repo
 Git checkout -b {local branch name }     -  only -b if local branch has not been created, use to change to/create a new local branch
+
 Git branch --set-upstream-to=origin/{repoBranchName} {localbranch name}  - use to connect local branch to track repo branch
 
