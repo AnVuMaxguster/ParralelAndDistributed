@@ -51,7 +51,7 @@ def Matrices_Multiplier_AsyncRunRowDivider(shared_memory:dict,matrix_a:list,matr
         P_res=multiprocessing.Manager().dict()
         sep=int(len(matrix_a)/2)
         p1list=matrix_a[0:sep]
-        p2list=matrix_a[sep+1:len(matrix_a)]
+        p2list=matrix_a[sep:len(matrix_a)]
         p1=ps(target=Matrices_Multiplier_AsyncRunRowDivider,args=(P_res,p1list,matrix_b,PL,1))
         p2=ps(target=Matrices_Multiplier_AsyncRunRowDivider,args=(P_res,p2list,matrix_b,PL,2))
         p1.start()
@@ -64,7 +64,7 @@ def Matrices_Multiplier_AsyncRunRowDivider(shared_memory:dict,matrix_a:list,matr
         shared_memory[pid]=result
         del P_res
                  
-def parallel_multiply_matrices(matrix_a:list,matrix_b):
+def parallel_multiply_matrices(matrix_a,matrix_b):
     shared_memory=multiprocessing.Manager().dict()
     PT=2
     PTT=int(math.sqrt(multiprocessing.cpu_count()))
@@ -78,8 +78,9 @@ def parallel_multiply_matrices(matrix_a:list,matrix_b):
     
     #print("\n\nmultiply result = ",shared_memory[0])
     print("\n\nExcution time:", exe_time,"s\n\n")
-    del shared_memory
-    
+    #del shared_memory
+    return shared_memory[0]
+
     
 def Matrixes_Multiplier_SyncRun(matrix_a,matrix_b):
     matrix_full=[]
@@ -97,16 +98,17 @@ def Matrixes_Multiplier_SyncFullProcess(matrix_a,matrix_b):
     result=Matrixes_Multiplier_SyncRun(matrix_a,matrix_b)
     Stop_time=time.time()
     exe_time=Stop_time-Start_time
-    #print("\n\nmultiply result = ",result)
+    print("\n\nmultiply result = ",np.array(result))
     print("\n\nExcution time:", exe_time,"s\n\n")
     
 def main():
-    thelista=createRandomMatrix(700,700).tolist()
-    thelistb=createRandomMatrix(700,700).tolist()
+    thelista=createRandomMatrix(500,500).tolist()
+    thelistb=createRandomMatrix(500,500).tolist()
     #print("list a = ",thelista)
     #print("list b = ",thelistb)
-    #Matrixes_Multiplier_SyncFullProcess(thelista,thelistb)
-    parallel_multiply_matrices(thelista,thelistb)
+    Matrixes_Multiplier_SyncFullProcess(thelista,thelistb)
+    print(np.array(thelista),"\n\n")
+    print(np.array(parallel_multiply_matrices(thelista,thelistb)))
 
 if __name__=="__main__":
     main()
