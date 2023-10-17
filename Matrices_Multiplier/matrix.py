@@ -4,7 +4,6 @@ from multiprocessing import Process as ps
 import numpy as np
 import math
 
-
 def createRandomMatrix(rows,collumn):
     newM=np.random.uniform(low=0, high=100, size=(rows,collumn))
     newM=newM.astype(int)
@@ -71,13 +70,13 @@ def parallel_multiply_matrices(matrix_a,matrix_b):
     if PTT > PT:
         PT=PTT
     PL = int(len(matrix_a)/(PT-1))
-    Start_time=time.time()
+    # Start_time=time.time()
     Matrices_Multiplier_AsyncRunRowDivider(shared_memory,matrix_a,matrix_b,PL,0)
-    Stop_time=time.time()
-    exe_time=Stop_time-Start_time
+    # Stop_time=time.time()
+    # exe_time=Stop_time-Start_time
     
     #print("\n\nmultiply result = ",shared_memory[0])
-    print("\n\nExcution time:", exe_time,"s\n\n")
+    #print("\n\nExcution time:", exe_time,"s\n\n")
     #del shared_memory
     return shared_memory[0]
 
@@ -102,12 +101,12 @@ def Matrixes_Multiplier_SyncFullProcess(matrix_a,matrix_b):
     print("\n\nExcution time:", exe_time,"s\n\n")
     
 def main():
-    thelista=createRandomMatrix(500,500).tolist()
-    thelistb=createRandomMatrix(500,500).tolist()
+    thelista=createRandomMatrix(5000,5000).tolist()
+    thelistb=createRandomMatrix(5000,5000).tolist()
+    print(np.array(thelista),"\n\n")
     #print("list a = ",thelista)
     #print("list b = ",thelistb)
-    Matrixes_Multiplier_SyncFullProcess(thelista,thelistb)
-    print(np.array(thelista),"\n\n")
+    # Matrixes_Multiplier_SyncFullProcess(thelista,thelistb)
     print(np.array(parallel_multiply_matrices(thelista,thelistb)))
 
 if __name__=="__main__":
