@@ -4,12 +4,12 @@ import multiprocessing
 from multiprocessing import Process as ps
 import math
 
+
 def Matrices_Multiplier_Async_calculator2(matrix_a: list, matrix_b: list, start_index: int, end_index: int):
     matrix_a_np = np.array(matrix_a)
     matrix_b_np = np.array(matrix_b)
     result = []
     for i in range(matrix_a_np.shape[0]):
-        # Initialize the result row
         row_result = []
         for j in range(start_index, end_index + 1):
             product = np.sum(matrix_a_np[i, :] * matrix_b_np[:, j])
@@ -67,21 +67,23 @@ def Matrices_Multiplier_AsyncRunRowDivider(shared_memory:dict,matrix_a:list,matr
                  
 def parallel_multiply_matrices(matrix_a,matrix_b):
     shared_memory=multiprocessing.Manager().dict()
-    # PT=2
-    # PTT=int(math.sqrt(multiprocessing.cpu_count()))
-    # if PTT > PT:
-    #     PT=PTT
-    # PL = int(len(matrix_a)/(PT-1))
-    # if(PL<2):
-    #     PL=2
-    PL=max(2, int(math.sqrt(multiprocessing.cpu_count())))
-    Start_time=time.time()
+    PT=2
+    PTT=int(math.sqrt(multiprocessing.cpu_count()))
+    if (PTT%2!=0):
+        PTT-=1
+    if PTT > PT:
+        PT=PTT
+    PL = int(len(matrix_a)/PT)
+    if(PL<2):
+        PL=2
+    #PL=max(2, int(len(matrix_a)/(math.sqrt(multiprocessing.cpu_count()-1))))
+    #Start_time=time.time()
     Matrices_Multiplier_AsyncRunRowDivider(shared_memory,matrix_a,matrix_b,PL,0)
-    Stop_time=time.time()
-    exe_time=Stop_time-Start_time
+    #Stop_time=time.time()
+    #exe_time=Stop_time-Start_time
     
     #print("\n\nmultiply result = ",shared_memory[0])
-    print("\n\nExcution time:", exe_time,"s\n\n")
+    #print("\n\nExcution time:", exe_time,"s\n\n")
     #del shared_memory
     return shared_memory[0]
 
@@ -128,16 +130,16 @@ def Matrices_Multiplier_Async_calculator(matrix_a:list,matrix_b:list,start_index
 def test(matrix_a,matrix_b):
     return np.multiply(np.array(matrix_a),np.array(matrix_b))
 
-
-
 def main():
-    thelista=createRandomMatrix(2000,2000).tolist()
-    thelistb=createRandomMatrix(2000,2000).tolist()
-    print(np.array(thelista))
+    thelista=createRandomMatrix(1500,1500).tolist()
+    thelistb=createRandomMatrix(1500,1500).tolist()
+    print(np.array(thelista),end="\n\n\n")
+    print(np.array(thelistb))
+    
+    
     #print("list a = ",thelista)
     #print("list b = ",thelistb)
     #Matrixes_Multiplier_SyncFullProcess(thelista,thelistb)
-    #print(test(thelista,thelistb))
     print(np.array(parallel_multiply_matrices(thelista,thelistb)))
 
 if __name__=="__main__":
