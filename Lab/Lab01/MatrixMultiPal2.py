@@ -76,7 +76,7 @@ def main():
     n = int(input())
     print(f"Creating two {n}x{n} matrices...")
 
-    # CREATE RANDOM SQUARE MATRICES
+    # CREATE BASE MATRIX
     matrix_a = np.random.randint(1, 11, (n, n))
     matrix_b = np.random.randint(1, 11, (n, n))
 
