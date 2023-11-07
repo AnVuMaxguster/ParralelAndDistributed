@@ -60,7 +60,7 @@ Git branch --set-upstream-to=origin/{repoBranchName} {localbranch name}  - use t
 Để tối ưu power tính toán, mình sẽ triển khai cluster với **3 workers** luôn. Với 1 máy vừa làm worker vừa làm master.
 - An ( Master + Worker 0 )
 - Duy ( Worker 1 )
-- Bảo ( Worker 2 )
+- Bảo ( Worker 2 )  
 
 ## Cài đặt Ubuntu dual boot với Windows
 **Cần**:
