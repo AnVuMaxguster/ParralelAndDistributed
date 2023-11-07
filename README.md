@@ -74,7 +74,8 @@ Git branch --set-upstream-to=origin/{repoBranchName} {localbranch name}  - use t
 Khi setup Ubuntu tới đoạn cần cung cấp **Full name**, **Username**, **Machine name**. Cần đặt **ĐÚNG** theo như mô tả dưới đây nha:
 - Full name: tùy thích.
 - Username: group1
-- Machine name: hadoop-worker1 ( Duy ), hadoop-worker2 ( Bảo ).
+- Machine name: hadoop-worker1 ( Duy ), hadoop-worker2 ( Bảo )
+
 Lý do là vì trong Hadoop máy master cần SSH tới workers để quản lý, phân công, ... Mà khi master nó SSH nó sẽ tự động SSH bằng username của chính nó đến các máy workers. Vì vậy 3 máy cần cài Hadoop với username như nhau để không lỗi.
 Mặc dù hoàn toàn có thể tạo 1 user group1 riêng sau, nhưng mà làm tại đây luôn cho nhanh.
 Machine name đặt vậy để dễ phân biệt thôi.
