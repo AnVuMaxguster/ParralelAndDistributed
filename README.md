@@ -123,7 +123,7 @@ sudo mv hadoop-3.3.4 /usr/local/hadoop
 ```
 
 
-### Cài đặt biến môi trường
+### Thiết lập biến môi trường
 
 Mở file **.bashsrc**:
 ```bash
