@@ -122,7 +122,7 @@ sudo mv hadoop-3.3.4 /usr/local/hadoop
 ```
 
 
-**Cài đặt biến môi trường**
+### Cài đặt biến môi trường
 
 Mở file **.bashsrc**:
 ```bash
@@ -175,7 +175,7 @@ hadoop version
 Output in ra "Hadoop version 3.3.6 ..." là được.
 
 
-**Configure tùm lum la**
+### Configure tùm lum la
 
 Mở file **core-site.xml**:
 ```bash
