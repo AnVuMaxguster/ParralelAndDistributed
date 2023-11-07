@@ -75,9 +75,9 @@ Khi setup Ubuntu tới đoạn cần cung cấp **Full name**, **Username**, **M
 - Full name: tùy thích.
 - Username: group1
 - Machine name: hadoop-worker1 ( Duy ), hadoop-worker2 ( Bảo )
-  Lý do là vì trong Hadoop máy master cần SSH tới workers để quản lý, phân công, ... Mà khi master nó SSH nó sẽ tự động SSH bằng username của chính nó đến các máy workers. Vì vậy 3 máy cần cài Hadoop với username như nhau để không lỗi.
-  Mặc dù hoàn toàn có thể tạo 1 user group1 riêng sau, nhưng mà làm tại đây luôn cho nhanh.
-  Machine name đặt vậy để dễ phân biệt thôi.
+Lý do là vì trong Hadoop máy master cần SSH tới workers để quản lý, phân công, ... Mà khi master nó SSH nó sẽ tự động SSH bằng username của chính nó đến các máy workers. Vì vậy 3 máy cần cài Hadoop với username như nhau để không lỗi.
+Mặc dù hoàn toàn có thể tạo 1 user group1 riêng sau, nhưng mà làm tại đây luôn cho nhanh.
+Machine name đặt vậy để dễ phân biệt thôi.
   
 
 ## Tải, cài đặt và configure môi trường Hadoop trên worker machine.
