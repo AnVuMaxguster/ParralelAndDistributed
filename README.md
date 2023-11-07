@@ -176,6 +176,7 @@ Output in ra "Hadoop version 3.3.6 ..." là được.
 
 
 **Configure tùm lum la**
+
 Mở file **core-site.xml**:
 ```bash
 sudo nano $HADOOP_HOME/etc/hadoop/core-site.xml
