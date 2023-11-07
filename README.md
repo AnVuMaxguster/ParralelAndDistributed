@@ -89,6 +89,7 @@ Machine name đặt vậy để dễ phân biệt thôi.
 
 Bắt đầu tại thư mục home ( ~ ).
 
+## Cài đặt các packages cần thiết
 Update:
 ```bash
 sudo apt update && sudo apt upgrade -y
