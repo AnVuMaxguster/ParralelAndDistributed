@@ -7,9 +7,12 @@ from multiprocessing import Process as Ps
 
 
 def createRandomArray(lenght):
-    newM=np.random.uniform(low=0, high=100, size=(lenght))
+    newM=np.random.uniform(low=0, high=1000, size=(lenght))
     newM=newM.astype(int)
     return newM
+def generate_array(size):
+    return np.random.choice(range(size * 3), size, replace=False)
+
 def quicksort_parallel(dalist:list,cpu_limit):
     # print("Cpu left:",cpu_limit.value)
     if cpu_limit.value<2:
@@ -56,8 +59,8 @@ def quicksort_parallel(dalist:list,cpu_limit):
 def quicksort(dalist:list):
     if len(dalist)<=1:
         return dalist
-    # elif len(dalist)<=100:
-    #     return sorted(dalist)
+    elif len(dalist)<=100:
+        return sorted(dalist)
     else:
         key=dalist[len(dalist)-1]
         smaller=[]
@@ -119,20 +122,22 @@ def mergesort_parallel(dalist:list,cpu_limit):
     return quicksort_result[0]
             
 
-def parallel_sorting(lista:list):
+def parallel_sort(matrix_a):
     CPU_Cap=multiprocessing.Value('i',multiprocessing.cpu_count())
-    return mergesort_parallel(lista,CPU_Cap.value)
+    return mergesort_parallel(matrix_a,CPU_Cap.value)
     
 # Offical-------------------------------------------    End!!!
 
 
 
 def main():
-    dalist=createRandomArray(1000000).tolist()
-    # print(dalist,"\n\n\n")
+    # dalist=createRandomArray(100000).tolist()
+    dalist=generate_array(100000).tolist()
+    print(dalist,"\n\n\n")
     # print(quicksort(dalist))
+    input("continue?")
     starttime=time.time()
-    result=parallel_sorting(dalist)
+    result=parallel_sort(dalist)
     endtime=time.time()
     exetime=endtime-starttime
     print (result)
