@@ -111,15 +111,15 @@ wget https://dlcdn.apache.org/hadoop/common/hadoop-3.3.6/hadoop-3.3.6.tar.gz
 tar -xvzf hadoop-3.3.6.tar.gz
 ```
 
-Chuyển Hadoop đến /usr/local & phân quyền sở hữu:
+Chuyển Hadoop đến /usr/local:
 ```bash
 sudo mv hadoop-3.3.4 /usr/local/hadoop
-sudo chown -R group1:group1 /usr/local/hadoop
 ```
 
-Tạo thư mục chứa logs:
+Tạo thư mục chứa logs & phân quyền sở hữu:
 ```bash
-sudo mv hadoop-3.3.4 /usr/local/hadoop
+sudo mkdir /usr/local/hadoop/logs
+sudo chown -R group1:group1 /usr/local/hadoop
 ```
 
 
