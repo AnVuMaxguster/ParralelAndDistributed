@@ -62,6 +62,7 @@ Git branch --set-upstream-to=origin/{repoBranchName} {localbranch name}  - use t
 - Duy ( Worker 1 )
 - Bảo ( Worker 2 )  
 
+
 ## Cài đặt Ubuntu dual boot với Windows
 **Cần**:
 - USB ( 20GB+ )
@@ -77,7 +78,9 @@ Khi setup Ubuntu tới đoạn cần cung cấp **Full name**, **Username**, **M
 - Machine name: hadoop-worker1 ( Duy ), hadoop-worker2 ( Bảo )
 
 Lý do là vì trong Hadoop máy master cần SSH tới workers để quản lý, phân công, ... Mà khi master nó SSH nó sẽ tự động SSH bằng username của chính nó đến các máy workers. Vì vậy 3 máy cần cài Hadoop với username như nhau để không lỗi.
+
 Mặc dù hoàn toàn có thể tạo 1 user group1 riêng sau, nhưng mà làm tại đây luôn cho nhanh.
+
 Machine name đặt vậy để dễ phân biệt thôi.
   
 
@@ -117,6 +120,7 @@ Tạo thư mục chứa logs:
 ```bash
 sudo mv hadoop-3.3.4 /usr/local/hadoop
 ```
+
 
 **Cài đặt biến môi trường**
 
@@ -191,6 +195,7 @@ sudo mkdir -p /home/group1/hdfs/datanode
 sudo chown -R group1:group1 /home/group1/hdfs
 ```
 
+
 Mở file **hdfs-site.xml**:
 ```bash
 sudo nano $HADOOP_HOME/etc/hadoop/hdfs-site.xml
@@ -204,6 +209,7 @@ sudo nano $HADOOP_HOME/etc/hadoop/hdfs-site.xml
 ```
 Save & exit.
 
+
 Mở file **mapred-site.xml**:
 ```bash
 sudo nano $HADOOP_HOME/etc/hadoop/mapred-site.xml
@@ -216,6 +222,7 @@ sudo nano $HADOOP_HOME/etc/hadoop/mapred-site.xml
     </property>
 ```
 Save & exit.
+
 
 Mở file **yarn-site.xml**:
 ```bash
@@ -242,7 +249,11 @@ sudo nano $HADOOP_HOME/etc/hadoop/yarn-site.xml
 ```
 Save & exit.
 
+
+
 **XONG ! ĐẦY ĐỦ CHO MÁY WORKER ĐỂ CHẠY ĐƯỢC TRONG CLUSER**
+
+
 
 ## Khởi động cluster.
 Phần này cần cả 3 máy cùng kết nối chung 1 mạng LAN. 
