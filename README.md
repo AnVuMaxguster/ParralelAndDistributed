@@ -306,3 +306,7 @@ sudo nano $HADOOP_HOME/etc/hadoop/mapred-site.xml
   <value>HADOOP_MAPRED_HOME=${HADOOP_HOME}</value>
  </property>
 ```
+      <property>
+          <name>dfs.client.block.write.replace-datanode-on-failure.policy</name>
+          <value>NEVER</value>
+      </property>
