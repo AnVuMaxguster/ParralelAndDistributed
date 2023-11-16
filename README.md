@@ -260,4 +260,49 @@ Save & exit.
 ## Khởi động cluster.
 Phần này cần cả 3 máy cùng kết nối chung 1 mạng LAN. 
 
+## BONUS.
+```bash
+sudo nano $HADOOP_HOME/etc/hadoop/hdfs-site.xml
+```
+Đi đến cuối file bằng tổ hợp `Alt+/`, sau đó paste đống này vào:
+```bash
+      <property>
+          <name>dfs.replication</name>
+          <value>3</value>
+      </property>
+```
 
+```bash
+sudo nano $HADOOP_HOME/etc/hadoop/hdfs-site.xml
+```
+Đi đến cuối file bằng tổ hợp `Alt+/`, sau đó paste đống này vào:
+```bash
+      <property>
+          <name>dfs.replication</name>
+          <value>3</value>
+      </property>
+```
+
+```bash
+sudo nano $HADOOP_HOME/etc/hadoop/yarn-site.xml
+```
+Xoa cap <property> cuoi cung
+
+```bash
+sudo nano $HADOOP_HOME/etc/hadoop/mapred-site.xml
+```
+Đi đến cuối file bằng tổ hợp `Alt+/`, sau đó paste đống này vào:
+```bash
+ <property>
+  <name>yarn.app.mapreduce.am.env</name>
+  <value>HADOOP_MAPRED_HOME=${HADOOP_HOME}</value>
+ </property>
+ <property>
+  <name>mapreduce.map.env</name>
+  <value>HADOOP_MAPRED_HOME=${HADOOP_HOME}</value>
+ </property>
+ <property>
+  <name>mapreduce.reduce.env</name>
+  <value>HADOOP_MAPRED_HOME=${HADOOP_HOME}</value>
+ </property>
+```
