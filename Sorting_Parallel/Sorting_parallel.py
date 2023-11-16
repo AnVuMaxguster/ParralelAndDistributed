@@ -59,8 +59,6 @@ def quicksort_parallel(dalist:list,cpu_limit):
 def quicksort(dalist:list):
     if len(dalist)<=1:
         return dalist
-    elif len(dalist)<=100:
-        return sorted(dalist)
     else:
         key=dalist[len(dalist)-1]
         smaller=[]
